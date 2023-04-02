@@ -15,7 +15,7 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        setUsers(data);
+        setUsers(data.results);
       });
   };
 
