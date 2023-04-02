@@ -4,13 +4,13 @@ import User from "./User";
 import Search from "./Search";
 
 function Main(props) {
-  const [state, setstate] = useState({
+  const [state, setState] = useState({
     query: "",
     users: props.users,
   });
 
   useEffect(() => {
-    setstate((state) => ({ ...state, users: props.users, query: "" }));
+    setState((state) => ({ ...state, users: props.users, query: "" }));
   }, [props.users]);
 
   const handleChange = (e) => {
@@ -19,7 +19,7 @@ function Main(props) {
       return user.name.first.toLowerCase().includes(e.toLowerCase());
     });
 
-    setstate({
+    setState({
       query: e,
       users: results,
     });
