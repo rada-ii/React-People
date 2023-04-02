@@ -97,6 +97,7 @@ html {
   margin: 0;
   padding: 5px;
 }
+
 .footer {
   position: fixed;
   left: 0;
@@ -104,7 +105,15 @@ html {
   width: 100%;
   background-color: #ee6e73;
   color: #fff;
-  padding-left: 20px;
+  padding-left: 15px;
+}
+
+.container-foot {
+  padding-right: 20px;
+  /* margin-bottom: 0; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card {
@@ -123,6 +132,9 @@ html {
 @media (min-width: 600px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .cards:last-child {
+    margin-bottom: 45px;
   }
 }
 
