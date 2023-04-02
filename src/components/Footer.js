@@ -5,7 +5,7 @@ function Footer() {
     <div className="footer">
       <div className="container-foot">
         <p className="foot">
-          &copy; {new Date().getFullYear()} Copyright BIT By Radmila Ivankovic
+          {new Date().getFullYear()} &copy; Copyright BIT By Radmila Ivankovic
         </p>
       </div>
     </div>
