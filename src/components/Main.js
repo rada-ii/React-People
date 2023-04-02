@@ -4,24 +4,43 @@ import User from "./User";
 import Search from "./Search";
 
 function Main(props) {
-  const [state, setState] = useState({
+  const [state, setstate] = useState({
     query: "",
     users: props.users,
   });
 
   useEffect(() => {
-    setState((state) => ({ ...state, users: props.users, query: "" }));
+    setstate((state) => ({ ...state, users: props.users, query: "" }));
   }, [props.users]);
 
   const handleChange = (e) => {
-    const results = props.users.filter((user) => {
+    e = e.split(" ");
+    e = e.filter((e1) => e1.trim().length > 0);
+
+    const firstName = props.users.filter((user) => {
       if (e === "") return props.users;
-      return user.name.first.toLowerCase().includes(e.toLowerCase());
+      return e.some((ew) =>
+        user.name.first.toLowerCase().includes(ew.toLowerCase())
+      );
     });
 
-    setState({
+    const user_array = firstName.length > 0 ? firstName : props.users;
+
+    const lastName = user_array.filter((user) => {
+      if (e === "") return props.users;
+      return e.some((ew) =>
+        user.name.last.toLowerCase().includes(ew.toLowerCase())
+      );
+    });
+
+    const results = [...firstName, ...lastName];
+    let uniqueUsers = results.filter((element, index) => {
+      return results.indexOf(element) === index;
+    });
+
+    setstate({
       query: e,
-      users: results,
+      users: e.length > 0 ? uniqueUsers : props.users,
     });
   };
 

@@ -3,7 +3,7 @@ import CakeIcon from "@mui/icons-material/Cake";
 
 function User({ user }) {
   let email = user.email.split("@")[0];
-  let domain = user.email.split("@")[1];
+  let domein = user.email.split("@")[1];
   return (
     <div
       className="user"
@@ -15,11 +15,12 @@ function User({ user }) {
         <img src={user.picture.large} alt={user.name.first} />
         <div className="user-details">
           <p>
-            {user.name.first.toLowerCase()} {user.name.last.toLowerCase()}
+            {user.name.first.charAt(0).toUpperCase() + user.name.first.slice(1)}{" "}
+            {user.name.last.charAt(0).toUpperCase() + user.name.last.slice(1)}
           </p>
           <p>
             <EmailIcon />
-            {email.substring(0, 3) + "..." + email.slice(-3)}.{domain}
+            {email.substring(0, 3) + "..." + email.slice(-3)}.{domein}
           </p>
           <p>
             <CakeIcon />
