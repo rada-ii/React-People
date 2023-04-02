@@ -4,17 +4,21 @@ import User from "./User";
 function Main(props) {
   return (
     <div className="container">
-      <div className="cards">
-        {props.users.results?.map((user, index) => (
-          <div className="card" key={index}>
-            {props.view === "grid" ? (
+      {props.view === "grid" ? (
+        <div className="cards">
+          {props.users.results?.map((user, index) => (
+            <div className="card" key={index}>
               <UserCard key={index} user={user} />
-            ) : (
-              <User key={index} user={user} />
-            )}
-          </div>
-        ))}
-      </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          {props.users.results?.map((user, index) => (
+            <User key={index} user={user} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,11 +1,13 @@
-import EmailIcon from "@mui/icons-material/Email";
-import CakeIcon from "@mui/icons-material/Cake";
-
 function UserCard({ user }) {
   let email = user.email.split("@")[0];
   let domain = user.email.split("@")[1];
   return (
-    <div className="user-grid-item">
+    <div
+      className="user-grid-item"
+      style={{
+        backgroundColor: user.gender === "female" ? "#ffebee" : "#ffffff",
+      }}
+    >
       <div className="user-profile">
         <img src={user.picture.large} alt={user.name.first} />
         <p className="user-name">{user.name.first.toLowerCase()}</p>
