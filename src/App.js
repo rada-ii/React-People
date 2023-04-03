@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -14,31 +15,58 @@ const App = () => {
     setLoading(true);
     setTimeout(() => {
       fetch("https://randomuser.me/api/?results=15")
-        .then((response) => response.json())
+        .then((response) => {
+          // setLoading(true);
+          return response.json();
+        })
         .then((data) => {
-          setUsers(data.results);
+          localStorage.setItem("last_update", new Date().toLocaleString());
           setLoading(false);
+          setUsers(data.results);
+          localStorage.setItem("users", JSON.stringify(data.results));
         });
     }, 3000);
   };
-  //added setTimeout so that loader can be visible
 
   useEffect(() => {
-    setView(window.localStorage.getItem("view"));
+    if (
+      localStorage.getItem("users") === null ||
+      localStorage.getItem("users") === "[]"
+    ) {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  }, [users]);
+
+  useEffect(() => {
+    setView(localStorage.getItem("view"));
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("view", view);
+    localStorage.setItem("view", view);
   }, [view]);
 
   useEffect(() => {
-    fetchUserData();
+    if (
+      localStorage.getItem("users") === null ||
+      localStorage.getItem("users") === "[]"
+    ) {
+      fetchUserData();
+    }
   }, []);
 
   return (
     <div className="root">
       <Header changeView={setView} view={view} fetchUsers={fetchUserData} />
-      {!loading ? <Main view={view} users={users} /> : <Loader />}
+      {!loading ? (
+        <Main
+          view={view}
+          users={
+            users.length > 0 ? users : JSON.parse(localStorage.getItem("users"))
+          }
+        />
+      ) : (
+        <Loader />
+      )}
       <Footer />
     </div>
   );
