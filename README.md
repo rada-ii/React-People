@@ -1,9 +1,20 @@
 checkout live:
 https://react-people.vercel.app/
+#
+This is a React app that fetches data about random users from API endpoint.
+
 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+### `npm i`
+or
+### `npm install`
+In the project directory, you can run:
+
+### `npm start`
 
 ## Available Scripts
 
