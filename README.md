@@ -1,7 +1,7 @@
 checkout live:
 https://react-people.vercel.app/
 #
-This is  React app that fetches data about random users from API endpoint.
+This is a React app that fetches data about random users from API endpoint.
 
 
 # Getting Started with Create React App
