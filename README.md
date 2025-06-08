@@ -1,6 +1,6 @@
 # 👥 React People
 
-A React application that fetches and displays random user data from an external API, showcasing clean UI design and API integration skills.
+A React app that fetches and displays random user data from an external API, showcasing clean UI design and API integration skills.
 
 ## 🔗 Live Demo
 **[https://react-people.vercel.app/](https://react-people.vercel.app/)**
